@@ -1,0 +1,72 @@
+#title EPM Manual
+#author Dan Pomohaci <dan.pomohaci@gamial.com>
+
+This manual documents the EPM package, version 1.0
+
+Copyright (C) 2008-2009 Dan Pomohaci
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+
+* Introduction
+
+TODO
+
+* Obtaining EPM
+
+TODO
+
+
+* Getting Started
+
+** Prerequisites
+
+You need Emacs (21.1 or greater), muse, and gnuplot. For tests you
+need also ert.
+
+** Installation
+
+Copy the source code directory into your file hierarchy. I use
+/local/share/emacs/epm  directory for this project. Optionally you can
+compile the sources.
+
+
+** Configuration
+
+Create a directory for yours projects and a sub-directory named day for
+days pages. See src/main/config/epm-config.el for suggestions to what
+you must add to .emacs
+
+EPM is also a Muse project and if you want to publish your projects
+you must add it to muse-project-alist:
+
+     ("WorkPlan" ("~/work/plan" "~/work/plan/day"
+                  :default "index"
+                  :major-mode epm-mode)
+      (:base "html" :path "/home/www/work/plan"))
+ 
+
+
+* Concepts
+
+TODO
+
+* My usage
+
+TODO
+
+* Conversions
+
+** From Rally
+
+TODO
+
+** To taskjuggler
+
+TODO
+
+* Keystroke Summary
+
+TODO
