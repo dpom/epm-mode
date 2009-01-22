@@ -51,11 +51,49 @@ you must add it to muse-project-alist:
 
 * Concepts
 
+The majority of epm concepts are borrowed from Scrum. For more
+information on scrum terms see [[http://www.scrumalliance.org/articles/39-glossary-of-scrum-terms][Glossary of Scrum Terms]] and [[http://www.scrumalliance.org/resources/339][The Scrum Primer]]
+
+** Feature
+
+I use the generic name *feature* for all the backlog items (also named
+*stories* or *use-cases* in scrum). A feature has an id and a short
+description (name). Its syntax in epm is:
+
+<example>
+** 3. Add a global action delete in back-office
+</example>
+
+where 3 is the id and the text after . is the feature description/name.
+
+** Resource
+
+** Task
+
+** Product Backlog Page
+
+** Sprint Page
+
+** Day Page
+
+* How I use epm
+
+** Starting Scrum
+
 TODO
 
-* My usage
+** Sprint Planning Meeting
 
 TODO
+
+** Daily Scrum
+
+TODO
+
+** Sprint Review
+
+TODO
+
 
 * Conversions
 
