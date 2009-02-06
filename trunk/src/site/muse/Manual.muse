@@ -64,17 +64,55 @@ description (name). Its syntax in epm is:
 ** 3. Add a global action delete in back-office
 </example>
 
-where 3 is the id and the text after . is the feature description/name.
+where ** is feature identifier, 3 is the id and the text after . is the feature description/name.
 
 ** Resource
 
+In EPM the term =resource= is restraint to human resources.
+
+ 
 ** Task
+
+Tasks are specific actions which must be done to develop a feature. In
+epm has the following syntax:
+
+<example>
+!3.2 "Add a delete icon in back-office" {1} (0.25) |0.75| [[#res-bill][bill]] [[day/2009-01-29][2009-01-29]] 
+</example>
+
+where:
+ ! :: task indicator
+ 3 :: parent feature id
+ 2 :: task id
+ text between " :: task description
+ {1} :: initial task estimation in days
+ (0.25) :: remaining work to do estimation
+ |0.75| :: work done
+ [[#res-bill][bill]] :: resource allocated
+ [[day/2009-01-29][2009-01-29]] :: day(s) in which resouces worked at this task
 
 ** Product Backlog Page
 
+The Product Backlog page contains all features not planned yet.
+ 
 ** Sprint Page
 
+The sprint page contains all information needed to manage a sprint. It
+is a standard muse page (see [[SprintExample.muse][Sprint Example]]) with an header and four
+sections: *Resources*, *Planned*, *Working*, and, *Done*. In header I put
+sprint useful informations as: startdate, deadline, ework (total
+estimate work), etime (sprint duration in days), date (a comma
+separated list with sprint dates), work (a comma separated list with
+work done in each day of the sprint), burndown (a comma separated list
+with estimated remaining work for each day). These lists are used for
+drawing the sprint burndown chart.  *Resources* contains a list of
+resources used in this sprint. *Planned* stores tasks planned for sprint
+but not started, *Working* tasks started but not finished, and *Done*
+tasks finished. In all three section the tasks are grouped by feature.
+
 ** Day Page
+
+
 
 * How I use epm
 
