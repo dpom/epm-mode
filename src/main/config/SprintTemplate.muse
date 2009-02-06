@@ -1,4 +1,4 @@
-#title Project Name
+#title Sprint Name
 
 startdate:
 
