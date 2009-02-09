@@ -1,0 +1,181 @@
+#summary This manual documents the EPM package, version 1.0
+
+#labels epm-mode,muse-mode,emacs
+
+<wiki:toc max_depth="2" />
+
+This manual documents the [[Manual.wiki EPM]] package, version 1.0
+
+Copyright (C) 2008-2009 Dan Pomohaci
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+
+
+= Introduction =
+
+TODO
+
+
+= Obtaining [[Manual.wiki EPM]] =
+
+TODO
+
+
+
+= Getting Started =
+
+== Prerequisites ==
+
+You need Emacs (21.1 or greater), muse, and gnuplot. For tests you
+need also ert.
+
+
+== Installation ==
+
+Copy the source code directory into your file hierarchy. I use
+`/local/share/emacs/epm`  directory for this project. Optionally you can
+compile the sources.
+
+
+
+== Configuration ==
+
+Create a directory for yours projects and a sub-directory named day for
+days pages. See src/main/config/epm-config.el for suggestions to what
+you must add to .emacs
+
+[[Manual.wiki EPM]] is also a Muse project and if you want to publish your projects
+you must add it to muse-project-alist:
+
+{{{
+     ("WorkPlan" ("~/work/plan" "~/work/plan/day"
+                  :default "index"
+                  :major-mode epm-mode)
+      (:base "html" :path "/home/www/work/plan"))
+}}}
+
+
+
+
+= Concepts =
+
+The majority of epm concepts are borrowed from Scrum. For more
+information on scrum terms see  and 
+
+== Feature ==
+
+I use the generic name _feature for all the backlog items (also named
+_stories or _use-cases in scrum). A feature has an id and a short
+description (name). Its syntax in epm is:
+
+{{{
+** 3. Add a global action delete in back-office
+}}}
+
+where:
+
+ *`**` is feature identifier,
+ *`3` is the id and the text after
+ *`.` is the feature description/name.
+
+
+== Resource ==
+
+In [[Manual.wiki EPM]] the term `resource` is restraint to human resources.
+
+
+
+== Task ==
+
+Tasks are specific actions which must be done to develop a feature. In
+epm has the following syntax:
+
+{{{
+!3.2 "Add a delete icon in back-office" {1} (0.25) |0.75| [[#res-bill][bill]] [[day/2009-01-29][2009-01-29]]
+}}}
+
+where:
+
+ *`!`  task indicator
+ *`3`  parent feature id
+ *`2`  task id
+ *`text between "`  task description
+ *`{1}`  initial task estimation in days
+ *`(0.25)`  remaining work to do estimation
+ *`|0.75|` work done
+ *`[[#res-bill][bill]]`  resource allocated
+ *`[[day/2009-01-29][2009-01-29]]` day(s) in which resouces worked at this task
+
+
+== Product Backlog Page ==
+
+The Product Backlog page contains all features not planned yet.
+
+
+== Sprint Page ==
+
+The sprint page contains all information needed to manage a sprint. It
+is a standard muse page (see [[SprintExample.muse Sprint Example]]) with an header and four
+sections: _Resources, _Planned, _Working, and, _Done. In header I put
+sprint useful informations as: startdate, deadline, ework (total
+estimate work), etime (sprint duration in days), date (a comma
+separated list with sprint dates), work (a comma separated list with
+work done in each day of the sprint), burndown (a comma separated list
+with estimated remaining work for each day). These lists are used for
+drawing the sprint burndown chart.  _Resources contains a list of
+resources used in this sprint. _Planned stores tasks planned for sprint
+but not started, _Working tasks started but not finished, and _Done
+tasks finished. In all three section the tasks are grouped by feature.
+
+
+== Day Page ==
+
+
+
+
+
+= How I use epm =
+
+== Starting Scrum ==
+
+TODO
+
+
+== Sprint Planning Meeting ==
+
+TODO
+
+
+== Daily Scrum ==
+
+TODO
+
+
+== Sprint Review ==
+
+TODO
+
+
+
+
+= Conversions =
+
+== From Rally ==
+
+TODO
+
+
+== To taskjuggler ==
+
+TODO
+
+
+
+= Keystroke Summary =
+
+TODO
+
+
