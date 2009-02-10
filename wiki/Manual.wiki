@@ -14,12 +14,32 @@ Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
 
 = Introduction =
 
-TODO
+I am an old emacs user and I try to use it for (almost)
+everything. Muse-mode is excellent for writing documentation and
+[http://www.emacswiki.org/cgi-bin/wiki/PlannerMode] for personal projects, but I needed a tool for managing team
+projects. First I tried to bend planner to my needs but it didn't work
+and I took an other approach by using plane muse page for
+planning. Gradually I created commands for my most used tasks and
+added support for scrum methodology. Now it became a complete package
+used daily.
 
 
 = Obtaining epm-mode =
 
-TODO
+You find the latest stable version at [http://epm-mode.googlecode.com/svn/trunk/]
+(I use branches for development).
+
+For svn users:
+
+{{{
+svn checkout http://epm-mode.googlecode.com/svn/trunk/ epm-mode
+}}}
+
+For git users:
+
+{{{
+git svn clone http://epm-mode.googlecode.com/svn/trunk/ epm-mode
+}}}
 
 
 
@@ -61,13 +81,13 @@ you must add it to muse-project-alist:
 = Concepts =
 
 The majority of epm concepts are borrowed from Scrum. For more
-information on scrum terms see [[http://www.scrumalliance.org/articles/39-glossary-of-scrum-terms]] and [[http://www.scrumalliance.org/resources/339]]
+information on scrum terms see [http://www.scrumalliance.org/articles/39-glossary-of-scrum-terms] and [http://www.scrumalliance.org/resources/339]
 
 == Feature ==
 
 I use the generic name _feature_ for all the backlog items (also named
 _stories_ or _use-cases_ in scrum). A feature has an id and a short
-description (name). Its syntax in epm is:
+description (name). In epm its syntax is:
 
 {{{
 ** 3. Add a global action delete in back-office
@@ -83,7 +103,6 @@ where:
 == Resource ==
 
 In epm-mode the term `resource` is restraint to human resources.
-
 
 
 == Task ==
@@ -116,26 +135,34 @@ The Product Backlog page contains all features not planned yet.
 == Sprint Page ==
 
 The sprint page contains all information needed to manage a sprint. It
-is a standard muse page (see [[Sprint Example]]) with an header and four
-sections: _Resources_, _Planned_, _Working_, and, _Done_. In header I put
-sprint useful informations as: startdate, deadline, ework (total
-estimate work), etime (sprint duration in days), date (a comma
-separated list with sprint dates), work (a comma separated list with
-work done in each day of the sprint), burndown (a comma separated list
-with estimated remaining work for each day). These lists are used for
-drawing the sprint burndown chart.  _Resources_ contains a list of
-resources used in this sprint. _Planned_ stores tasks planned for sprint
-but not started, _Working_ tasks started but not finished, and _Done_
-tasks finished. In all three section the tasks are grouped by feature.
+is a standard muse page (see [Sprint Example]) with an header and four
+sections: _Resources_, _Planned_, _Working_, and, _Done_.
+
+In header I put sprint useful information as: `startdate`, deadline,
+`ework` (total estimate work), `etime` (sprint duration in days), `date` (a
+comma separated list with sprint dates), `work` (a comma separated list
+with work done in each day of the sprint), `burndown` (a comma separated
+list with estimated remaining work for each day). These lists are used
+for drawing the sprint burndown chart.
+
+_Resources_ contains a list of resources used in this sprint. _Planned_
+stores tasks planned for sprint but not started, _Working_ tasks started
+but not finished, and _Done_ tasks finished. In all three section the
+tasks are grouped by feature.
 
 
 == Day Page ==
 
+The day page contains tasks executed in this day. The tasks order is
+random because I use `epm-copy-task-to-day` to fill day pages. The work-done
+task field value indicates the work done only in this day and not the
+entire work done as it is in sprint page.
 
 
 
+= How I use epm-mode =
 
-= How I use epm =
+
 
 == Starting Scrum ==
 
@@ -150,6 +177,9 @@ TODO
 == Daily Scrum ==
 
 TODO
+
+
+<a href="http://picasaweb.google.ro/lh/photo/7Rva2USryUjFRvti2V5PCw?feat=embedwebsite"><img src="http://lh6.ggpht.com/_WTY0XTodjjg/SYxREf0wzxI/AAAAAAAAAOM/9jAJT_JEV34/s800/sprintburndownchart.png" /></a>
 
 
 == Sprint Review ==
@@ -174,6 +204,26 @@ TODO
 
 = Keystroke Summary =
 
-TODO
+ * a  epm-move-task-to-working
+ * b  epm-rally-print-project
+ * c  epm-copy-task-to-day
+ * d  epm-add-day
+ * e  epm-rally-print-features
+ * f  epm-display-focus
+ * g  epm-display-burndown-chart
+ * h  epm-help
+ * i  epm-display-user-done
+ * k  epm-rally-print-features2
+ * m  epm
+ * n  epm-add-nonworking-period
+ * p  epm-move-task-to-planned
+ * r  epm-add-resource
+ * s  epm-display-remaining-estimate
+ * t  epm-display-task-total-done
+ * u  epm-update-task
+ * v  epm-display-todo
+ * w  epm-display-done
+ * x  epm-move-task-to-done
+ * z  epm-display-estimate
 
 
