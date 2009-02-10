@@ -1,7 +1,8 @@
-#title EPM Manual
+#title Epm-mode Manual
 #author Dan Pomohaci <dan.pomohaci@gamial.com>
+#desc This manual documents the epm-mode package, version 1.0
 
-This manual documents the EPM package, version 1.0
+This manual documents the epm-mode package, version 1.0
 
 Copyright (C) 2008-2009 Dan Pomohaci
 
@@ -10,13 +11,34 @@ under the terms of the GNU Free Documentation License, Version 3 or
 any later version published by the Free Software Foundation; with no
 Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
 
+
 * Introduction
 
-TODO
+I am an old emacs user and I try to use it for (almost)
+everything. Muse-mode is excellent for writing documentation and
+[[http://www.emacswiki.org/cgi-bin/wiki/PlannerMode][planner]] for personal projects, but I needed a tool for managing team
+projects. First I tried to bend planner to my needs but it didn't work
+and I took an other approach by using plane muse page for
+planning. Gradually I created commands for my most used tasks and
+added support for scrum methodology. Now it became a complete package
+used daily.
 
-* Obtaining EPM
+* Obtaining epm-mode
 
-TODO
+You find the latest stable version at http://epm-mode.googlecode.com/svn/trunk/
+(I use branches for development).
+
+For svn users:
+
+<example>
+svn checkout http://epm-mode.googlecode.com/svn/trunk/ epm-mode
+</example>
+
+For git users:
+
+<example>
+git svn clone http://epm-mode.googlecode.com/svn/trunk/ epm-mode
+</example>
 
 
 * Getting Started
@@ -29,7 +51,7 @@ need also ert.
 ** Installation
 
 Copy the source code directory into your file hierarchy. I use
-/local/share/emacs/epm  directory for this project. Optionally you can
+=/local/share/emacs/epm=  directory for this project. Optionally you can
 compile the sources.
 
 
@@ -39,14 +61,15 @@ Create a directory for yours projects and a sub-directory named day for
 days pages. See src/main/config/epm-config.el for suggestions to what
 you must add to .emacs
 
-EPM is also a Muse project and if you want to publish your projects
+epm-mode is also a Muse project and if you want to publish your projects
 you must add it to muse-project-alist:
 
+<example>
      ("WorkPlan" ("~/work/plan" "~/work/plan/day"
                   :default "index"
                   :major-mode epm-mode)
       (:base "html" :path "/home/www/work/plan"))
- 
+</example>
 
 
 * Concepts
@@ -58,18 +81,20 @@ information on scrum terms see [[http://www.scrumalliance.org/articles/39-glossa
 
 I use the generic name *feature* for all the backlog items (also named
 *stories* or *use-cases* in scrum). A feature has an id and a short
-description (name). Its syntax in epm is:
+description (name). In epm its syntax is:
 
 <example>
 ** 3. Add a global action delete in back-office
 </example>
 
-where ** is feature identifier, 3 is the id and the text after . is the feature description/name.
+where:
+ - =**=  feature identifier,
+ - =3= the id and the text after
+ - =.= the feature description/name.
 
 ** Resource
 
-In EPM the term =resource= is restraint to human resources.
-
+In epm-mode the term =resource= is restraint to human resources.
  
 ** Task
 
@@ -81,15 +106,15 @@ epm has the following syntax:
 </example>
 
 where:
- ! :: task indicator
- 3 :: parent feature id
- 2 :: task id
- text between " :: task description
- {1} :: initial task estimation in days
- (0.25) :: remaining work to do estimation
- |0.75| :: work done
- [[#res-bill][bill]] :: resource allocated
- [[day/2009-01-29][2009-01-29]] :: day(s) in which resouces worked at this task
+ - =!=  task indicator
+ - =3=  parent feature id
+ - =2=  task id
+ - =text between "=  task description
+ - ={1}=  initial task estimation in days
+ - =(0.25)=  remaining work to do estimation
+ - =|0.75|= work done
+ - =[[#res-bill][bill]]=  resource allocated
+ - =[[day/2009-01-29][2009-01-29]]= day(s) in which resouces worked at this task
 
 ** Product Backlog Page
 
@@ -99,22 +124,30 @@ The Product Backlog page contains all features not planned yet.
 
 The sprint page contains all information needed to manage a sprint. It
 is a standard muse page (see [[SprintExample.muse][Sprint Example]]) with an header and four
-sections: *Resources*, *Planned*, *Working*, and, *Done*. In header I put
-sprint useful informations as: startdate, deadline, ework (total
-estimate work), etime (sprint duration in days), date (a comma
-separated list with sprint dates), work (a comma separated list with
-work done in each day of the sprint), burndown (a comma separated list
-with estimated remaining work for each day). These lists are used for
-drawing the sprint burndown chart.  *Resources* contains a list of
-resources used in this sprint. *Planned* stores tasks planned for sprint
-but not started, *Working* tasks started but not finished, and *Done*
-tasks finished. In all three section the tasks are grouped by feature.
+sections: *Resources*, *Planned*, *Working*, and, *Done*.
+
+In header I put sprint useful information as: =startdate=, deadline,
+=ework= (total estimate work), =etime= (sprint duration in days), =date= (a
+comma separated list with sprint dates), =work= (a comma separated list
+with work done in each day of the sprint), =burndown= (a comma separated
+list with estimated remaining work for each day). These lists are used
+for drawing the sprint burndown chart.
+
+*Resources* contains a list of resources used in this sprint. *Planned*
+stores tasks planned for sprint but not started, *Working* tasks started
+but not finished, and *Done* tasks finished. In all three section the
+tasks are grouped by feature.
 
 ** Day Page
 
+The day page contains tasks executed in this day. The tasks order is
+random because I use =epm-copy-task-to-day= to fill day pages. The work-done
+task field value indicates the work done only in this day and not the
+entire work done as it is in sprint page.
+
+* How I use epm-mode
 
 
-* How I use epm
 
 ** Starting Scrum
 
@@ -145,4 +178,25 @@ TODO
 
 * Keystroke Summary
 
-TODO
+ - a  epm-move-task-to-working
+ - b  epm-rally-print-project
+ - c  epm-copy-task-to-day
+ - d  epm-add-day
+ - e  epm-rally-print-features
+ - f  epm-display-focus
+ - g  epm-display-burndown-chart
+ - h  epm-help
+ - i  epm-display-user-done
+ - k  epm-rally-print-features2
+ - m  epm
+ - n  epm-add-nonworking-period
+ - p  epm-move-task-to-planned
+ - r  epm-add-resource
+ - s  epm-display-remaining-estimate
+ - t  epm-display-task-total-done
+ - u  epm-update-task
+ - v  epm-display-todo
+ - w  epm-display-done
+ - x  epm-move-task-to-done
+ - z  epm-display-estimate
+
