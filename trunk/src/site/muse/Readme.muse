@@ -6,8 +6,8 @@ interchangeably throughout this document to refer to this software.
 
 * Synopsis
 
-epm-mode is a project management tool based on [[http://mwolson.org/projects/EmacsMuse.html][Emacs Muse]] which
-implements SCRUM philosophy.
+epm-mode is a tool for project managers, based on [[http://mwolson.org/projects/EmacsMuse.html][Emacs Muse,]] which
+implements SCRUM methodology.
 
 
 * Directory contents
@@ -45,7 +45,7 @@ Create a directory for yours projects and a sub-directory named day for
 days pages. See src/main/config/epm-config.el for suggestions to what
 you must add to .emacs
 
-EPM is also a Muse project and if you want to publish your projects
+EPM is also a Muse project and if you want to publish your plans
 you must add it to muse-project-alist:
 
      ("WorkPlan" ("~/work/plan" "~/work/plan/day"
