@@ -16,5 +16,6 @@
 (setq epm-main-file "index.muse")
 (setq epm-burndown-template-file "~/pers/project/dpom/epm/src/main/config/burndown.gp")
 (setq epm-resource-list '("bill" "dan" "john" "justin" "mary" "steve"))
+(define-key global-map (kbd "\C-c\C-p") 'epm-prefix-map)
 
 ;;; epm-config.el ends here
