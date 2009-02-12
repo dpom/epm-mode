@@ -200,7 +200,7 @@ from working to done (`epm-move-task-to-done`)
 Using gnuplot and `epm-display-burndown-chart` it is possible to see
 graphical how the sprint evolve:
 
-<a href="http://picasaweb.google.ro/lh/photo/7Rva2USryUjFRvti2V5PCw?feat=embedwebsite"><img src="http://lh6.ggpht.com/_WTY0XTodjjg/[SYxREf]0wzxI/AAAAAAAAAOM/9jAJT_JEV34/s800/sprintburndownchart.png" /></a>
+<a href="http://picasaweb.google.ro/lh/photo/7Rva2USryUjFRvti2V5PCw?feat=embedwebsite"><img src="http://lh6.ggpht.com/_WTY0XTodjjg/SYxREf0wzxI/AAAAAAAAAOM/9jAJT_JEV34/s800/sprintburndownchart.png" /></a>
 
 
 = Conversions =
