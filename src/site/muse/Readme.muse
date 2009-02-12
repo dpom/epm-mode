@@ -1,3 +1,4 @@
+                                                          -*- Muse -*-
 #desc This is the README file for epm-mode.
 
 * Synopsis
