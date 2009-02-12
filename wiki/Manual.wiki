@@ -202,7 +202,6 @@ graphical how the sprint evolve:
 
 <a href="http://picasaweb.google.ro/lh/photo/7Rva2USryUjFRvti2V5PCw?feat=embedwebsite"><img src="http://lh6.ggpht.com/_WTY0XTodjjg/[SYxREf]0wzxI/AAAAAAAAAOM/9jAJT_JEV34/s800/sprintburndownchart.png" /></a>
 
-[http://lh6.ggpht.com/_WTY0XTodjjg/[SYxREf]0wzxI/AAAAAAAAAOM/9jAJT_JEV34/s800/sprintburndownchart.png]
 
 = Conversions =
 
