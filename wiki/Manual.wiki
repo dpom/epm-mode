@@ -120,7 +120,7 @@ where:
  * `3`  parent feature id
  * `2`  task id
  * `text between "`  task description
- * `{1}`  initial task estimation in days
+ * `{1}`  initial task estimation in scrum points (ideal man-days)
  * `(0.25)`  remaining work to do estimation
  * `|0.75|` work done
  * `[[#res-bill][bill]]`  resource allocated
@@ -166,27 +166,42 @@ entire work done as it is in sprint page.
 
 == Starting Scrum ==
 
-TODO
+I use a single directory for all the projects I manage:
+`~/work/plan`. In this directory I create a subdirectory `day` for day
+pages.
+
 
 
 == Sprint Planning Meeting ==
 
-TODO
+First I create (using `sprintx` template) an empty sprint page for the
+next sprint.  With the product owner we establish what features must
+be achivied in this sprint. I move these features from product backlog
+page in sprint page. With the dev team we split each feature in tasks
+(create new task with `taskx` template) and put them in _Planned_
+section. Using `epm-display-todo` we find the initial estimate in scrum
+points (ideal man-days). Divided with team focus and team length we
+obtain an estimate sprint duration. Usually the product owner is not
+happy with this duration and I must intermediate negotiations between
+dev team and product owner but epm-mode doesn't help me in these :(.
 
 
 == Daily Scrum ==
 
-TODO
+In daily scrum meeting I use the sprint page for:
+
+ * assigning tasks to developers - `epm-add-resource`
+ * create new day page (template `dayx`), assigning day to tasks -
+`epm-add-day`, and, copy tasks to day (`epm-copy-task-to-day`)
+ * move tasks from planned to working (`epm-move-task-to-working`) or
+from working to done (`epm-move-task-to-done`)
+ * update tasks (`epm-update-task`)
+
+Using gnuplot and `epm-display-burndown-chart` it is possible to see
+graphical how the sprint evolve:
 
 
-<a href="http://picasaweb.google.ro/lh/photo/7Rva2USryUjFRvti2V5PCw?feat=embedwebsite"><img src="http://lh6.ggpht.com/_WTY0XTodjjg/SYxREf0wzxI/AAAAAAAAAOM/9jAJT_JEV34/s800/sprintburndownchart.png" /></a>
-
-
-== Sprint Review ==
-
-TODO
-
-
+<a href="http://picasaweb.google.ro/lh/photo/7Rva2USryUjFRvti2V5PCw?feat=embedwebsite"><img src="http://lh6.ggpht.com/_WTY0XTodjjg/[SYxREf]0wzxI/AAAAAAAAAOM/9jAJT_JEV34/s800/sprintburndownchart.png" /></a>
 
 
 = Conversions =
