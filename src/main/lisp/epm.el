@@ -142,6 +142,11 @@
            (< (epm-get-task-id task1) (epm-get-task-id task2)))))
 
 
+(defun epm-task= (task1 task2)
+  (and (= (epm-get-task-featureid task1) (epm-get-task-featureid task2))
+           (= (epm-get-task-id task1) (epm-get-task-id task2))))
+
+
       
 
 ;; Feature functions
@@ -244,7 +249,7 @@ and ending in MAX."
 
 
 (defun epm-get-tasks-from-file (file)
-  "Get all task from a day/resource FILE."
+  "Get all task from a day FILE."
   (with-temp-buffer
     (insert-file-contents file)
     (epm-get-tasks (point-min) (point-max))))
@@ -355,6 +360,16 @@ and ending in MAX."
       (list end)
     (cons begin (epm-generate-iso-day-list (epm-get-iso-next-day begin) end))))
 
+(defun epm-get-all-tasks-between (begin end)
+  "Get all tasks from days between BEGIN and END"
+  (let ((acq ()))
+    (mapc (lambda (x)
+            (let ((file (expand-file-name (concat "day/" x ".muse") epm-repository)))
+              (if (file-exists-p file)
+                  (setq acq (append (epm-get-tasks-from-file file) acq)))))
+          (epm-generate-iso-day-list begin end))
+    (remove-duplicates acq :test 'epm-task= :from-end t)))
+
 ;; Commands
 
 (defun epm ()
@@ -412,10 +427,18 @@ and ending in MAX."
   (epm-move-task epm-planned-regexp))
 
 (defun epm-add-nonworking-period ()
-  (interactive)
   "Insert an non-working period with the following format:
 ?resource startdate enddate"
+  (interactive)
   (insert (format "?%s %s %s\n" (epm-read-resource) (epm-read-day "Start day") (epm-read-day "End day"))))
+
+(defun epm-print-all-tasks-between ()
+  "Insert in current buffer all tasks contained in day files."
+  (interactive)
+  (mapc #'(lambda (y)
+            (insert (epm-task-print y)))
+        (epm-get-all-tasks-between (epm-read-day "Begin:") (epm-read-day "End:"))))
+
 
 ;; Key map
 
@@ -427,6 +450,7 @@ and ending in MAX."
     (define-key map "c" 'epm-copy-task-to-day)
     (define-key map "d" 'epm-add-day)
     (define-key map "h" 'epm-help)
+    (define-key map "l" 'epm-print-all-tasks-between)
     (define-key map "m" 'epm)
     (define-key map "n" 'epm-add-nonworking-period)
     (define-key map "p" 'epm-move-task-to-planned)
