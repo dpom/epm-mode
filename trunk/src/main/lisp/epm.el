@@ -349,6 +349,12 @@ and ending in MAX."
          (next-day (if (< day last-day) (1+ day) 1)))
     (format "%d-%02d-%02d" next-year next-month next-day)))
 
+(defun epm-generate-iso-day-list (begin end)
+  "Generate a list with iso dates between BEGIN and END"
+  (if (string= begin end)
+      (list end)
+    (cons begin (epm-generate-iso-day-list (epm-get-iso-next-day begin) end))))
+
 ;; Commands
 
 (defun epm ()
