@@ -329,7 +329,26 @@ and ending in MAX."
   "Select from TASKS only USER tasks"
   (remove nil (mapcar (lambda (x) (if (equal user (epm-get-task-resource x)) x))
                       tasks)))
-                    
+
+
+(defun epm-get-iso-next-day (day)
+  "Return the next day. The DAY and the next day are in ISO format."
+  (let* ((lday (split-string day "-"))
+         (year (string-to-number (car lday)))
+         (month (string-to-number (nth 1 lday)))
+         (day (string-to-number (nth 2 lday)))
+         (last-day (calendar-last-day-of-month month year))
+         (next-year
+          (if (and (= 12 month) (= 31 day))
+              (1+ year)
+            year))
+         (next-month
+          (if (>= day last-day)
+              (1+ (mod month 12))
+            month))
+         (next-day (if (< day last-day) (1+ day) 1)))
+    (format "%d-%02d-%02d" next-year next-month next-day)))
+
 ;; Commands
 
 (defun epm ()

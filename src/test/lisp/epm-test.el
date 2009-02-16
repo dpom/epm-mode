@@ -96,6 +96,15 @@
        (should (= (length (epm-get-user-tasks user (epm-get-all-tasks))) check))))))
 
 
+(deftest epm-test-get-iso-next-day ()
+  "Return the next day. The DAY and the next day are in ISO format."
+  (should (string= (epm-get-iso-next-day "2009-02-16") "2009-02-17")) ; normal day
+  (should (string= (epm-get-iso-next-day "2009-02-28") "2009-03-01")) ; last day of the 28 days month
+  (should (string= (epm-get-iso-next-day "2009-04-30") "2009-05-01")) ; last day of the 30 days month 
+  (should (string= (epm-get-iso-next-day "2009-03-31") "2009-04-01")) ; last day of the 31 days month
+  (should (string= (epm-get-iso-next-day "2009-12-31") "2010-01-01")) ; last day of the year
+  )
+
 ;; scrum tests
 
 (load-file (expand-file-name "src/main/lisp/epm-scrum.el" epm-test-project-home))

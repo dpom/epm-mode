@@ -147,8 +147,6 @@ entire work done as it is in sprint page.
 
 * How I use epm-mode
 
-
-
 ** Starting Scrum
 
 I use a single directory for all the projects I manage:
