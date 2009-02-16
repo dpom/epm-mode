@@ -105,6 +105,12 @@
   (should (string= (epm-get-iso-next-day "2009-12-31") "2010-01-01")) ; last day of the year
   )
 
+
+(deftest epm-test-generate-iso-day-list ()
+  "Generate a list with iso dates between BEGIN and END"
+  (should (equal (epm-generate-iso-day-list "2009-01-01" "2009-01-01") '("2009-01-01"))) ; single day
+  (should (equal (epm-generate-iso-day-list "2009-01-01" "2009-01-05") '("2009-01-01" "2009-01-02" "2009-01-03" "2009-01-04" "2009-01-05"))))
+
 ;; scrum tests
 
 (load-file (expand-file-name "src/main/lisp/epm-scrum.el" epm-test-project-home))
