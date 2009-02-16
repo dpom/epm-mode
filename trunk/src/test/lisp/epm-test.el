@@ -111,6 +111,18 @@
   (should (equal (epm-generate-iso-day-list "2009-01-01" "2009-01-01") '("2009-01-01"))) ; single day
   (should (equal (epm-generate-iso-day-list "2009-01-01" "2009-01-05") '("2009-01-01" "2009-01-02" "2009-01-03" "2009-01-04" "2009-01-05"))))
 
+(deftest epm-test-get-all-tasks-between ()
+    "Get all tasks from days between BEGIN and END"
+  (epm-test-fixture
+   (lambda ()
+     (setq epm-repository epm-test-work-dir)
+     (should (equal (epm-get-all-tasks-between "2009-01-01" "2009-01-03")
+                    '((3 1 "task 3" 3 0 3 "[[#res-dan][dan]] [[day/2009-01-01][2009-01-01]] [[day/2009-01-02][2009-01-02]] [[day/2009-01-03][2009-01-03]]")
+                      (2 1 "task 4" 2.0 0 2 "[[#res-doe][doe]] [[day/2009-01-02][2009-01-02]] [[day/2009-01-03][2009-01-03]]")
+                      (1 4 "task 2" 1.0 0 1 "[[#res-doe][doe]] [[day/2009-01-01][2009-01-01]] [[day/2009-01-02][2009-01-02]]")
+                      (1 3 "task 1" 1.0 0.5 0.5 "[[#res-dan][dan]] [[day/2009-01-01][2009-01-01]]"))
+                    )))))
+
 ;; scrum tests
 
 (load-file (expand-file-name "src/main/lisp/epm-scrum.el" epm-test-project-home))
