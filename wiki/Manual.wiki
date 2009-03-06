@@ -135,7 +135,7 @@ The Product Backlog page contains all features not planned yet.
 == Sprint Page ==
 
 The sprint page contains all information needed to manage a sprint. It
-is a standard muse page (see [SprintExemple]) with an header and four
+is a standard muse page (see [SprintExample]) with an header and four
 sections: _Resources_, _Planned_, _Working_, and, _Done_.
 
 In header I put sprint useful information as: `startdate`, deadline,
