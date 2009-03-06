@@ -153,7 +153,7 @@ tasks are grouped by feature.
 
 == Day Page ==
 
-The day page is also a muse page (see [2009-01-08]) and contains tasks executed in this day. The tasks order is
+The day page is also a muse page (see [20090108 2009-01-08]) and contains tasks executed in this day. The tasks order is
 random because I use `epm-copy-task-to-day` to fill day pages. The work-done
 task field value indicates the work done only in this day and not the
 entire work done as it is in sprint page.
