@@ -1,0 +1,8 @@
+
+= Tasks =
+
+!1.1 "add total field in item" {3.00} (3.00) |1.00| [john] [2009-01-05]
+
+!3.1 "create a big import file" {1.00} (1.00) |1.00| [mary] [2009-01-05]
+
+

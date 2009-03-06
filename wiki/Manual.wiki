@@ -111,7 +111,7 @@ Tasks are specific actions which must be done to develop a feature. In
 epm has the following syntax:
 
 {{{
-!3.2 "Add a delete icon in back-office" {1} (0.25) |0.75| [[#res-bill][bill]] [[day/2009-01-29][2009-01-29]]
+!3.2 "Add a delete icon in back-office" {1} (0.25) |0.75| bill 2009-01-29
 }}}
 
 where:
@@ -123,8 +123,8 @@ where:
  * `{1}`  initial task estimation in scrum points (ideal man-days)
  * `(0.25)`  remaining work to do estimation
  * `|0.75|` work done
- * `[[#res-bill][bill]]`  resource allocated
- * `[[day/2009-01-29][2009-01-29]]` day(s) in which resouces worked at this task
+ * `bill`  resource allocated
+ * `2009-01-29` day(s) in which resouces worked at this task
 
 
 == Product Backlog Page ==
@@ -135,7 +135,7 @@ The Product Backlog page contains all features not planned yet.
 == Sprint Page ==
 
 The sprint page contains all information needed to manage a sprint. It
-is a standard muse page (see [Sprint Example]) with an header and four
+is a standard muse page (see [SprintExemple]) with an header and four
 sections: _Resources_, _Planned_, _Working_, and, _Done_.
 
 In header I put sprint useful information as: `startdate`, deadline,
@@ -153,7 +153,7 @@ tasks are grouped by feature.
 
 == Day Page ==
 
-The day page contains tasks executed in this day. The tasks order is
+The day page is also a muse page (see [2009-01-08]) and contains tasks executed in this day. The tasks order is
 random because I use `epm-copy-task-to-day` to fill day pages. The work-done
 task field value indicates the work done only in this day and not the
 entire work done as it is in sprint page.
@@ -161,8 +161,6 @@ entire work done as it is in sprint page.
 
 
 = How I use epm-mode =
-
-
 
 == Starting Scrum ==
 
@@ -218,6 +216,14 @@ TODO
 
 = Keystroke Summary =
 
+You can set the epm prefix map key with:
+
+{{{
+(define-key global-map (kbd "\C-c\C-p") 'epm-prefix-map)
+}}}
+
+Epm defines the following commands keys:
+
  * a  epm-move-task-to-working
  * b  epm-rally-print-project
  * c  epm-copy-task-to-day
@@ -228,6 +234,7 @@ TODO
  * h  epm-help
  * i  epm-display-user-done
  * k  epm-rally-print-features2
+ * l  epm-epm-print-all-tasks-between
  * m  epm
  * n  epm-add-nonworking-period
  * p  epm-move-task-to-planned
