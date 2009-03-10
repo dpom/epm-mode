@@ -10,7 +10,7 @@
 
 ;; Global variables
 
-(defvar epm-rally-userstory-regexp "S\\([0-9]+\\): \\(.+\\)"
+(defvar epm-rally-userstory-regexp "[S\\|DE]\\([0-9]+\\): \\(.+\\)"
   "User story regular expression")
 
 ;; Functions
@@ -66,7 +66,7 @@ from string."
      (match-string-no-properties 2 userstory)))
 
 (defsubst epm-rally-userstory-get-id (userstory)
-  (substring (epm-string-trim (nth 1 userstory) "\"") 1))
+  (substring (epm-string-trim (nth 1 userstory) "\"") 2))
 
 (defsubst epm-rally-userstory-get-name (userstory)
   (epm-string-trim (nth 2 userstory) "\""))

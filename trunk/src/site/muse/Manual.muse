@@ -102,7 +102,7 @@ Tasks are specific actions which must be done to develop a feature. In
 epm has the following syntax:
 
 <example>
-!3.2 "Add a delete icon in back-office" {1} (0.25) |0.75| [[#res-bill][bill]] [[day/2009-01-29][2009-01-29]] 
+!3.2 "Add a delete icon in back-office" {1} (0.25) |0.75| bill 2009-01-29 
 </example>
 
 where:
@@ -113,8 +113,8 @@ where:
  - ={1}=  initial task estimation in scrum points (ideal man-days)
  - =(0.25)=  remaining work to do estimation
  - =|0.75|= work done
- - =[[#res-bill][bill]]=  resource allocated
- - =[[day/2009-01-29][2009-01-29]]= day(s) in which resouces worked at this task
+ - =bill=  resource allocated
+ - =2009-01-29= day(s) in which resouces worked at this task
 
 ** Product Backlog Page
 
@@ -123,7 +123,7 @@ The Product Backlog page contains all features not planned yet.
 ** Sprint Page
 
 The sprint page contains all information needed to manage a sprint. It
-is a standard muse page (see [[SprintExample.muse][Sprint Example]]) with an header and four
+is a standard muse page (see [[SprintExample]]) with an header and four
 sections: *Resources*, *Planned*, *Working*, and, *Done*.
 
 In header I put sprint useful information as: =startdate=, deadline,
@@ -140,7 +140,7 @@ tasks are grouped by feature.
 
 ** Day Page
 
-The day page contains tasks executed in this day. The tasks order is
+The day page is also a muse page (see [[2009-01-08.muse][2009-01-08]]) and contains tasks executed in this day. The tasks order is
 random because I use =epm-copy-task-to-day= to fill day pages. The work-done
 task field value indicates the work done only in this day and not the
 entire work done as it is in sprint page.
@@ -181,14 +181,25 @@ Using gnuplot and =epm-display-burndown-chart= it is possible to see
 graphical how the sprint evolve:
 
 [[images/sprint_burndown_chart.png]] 
-;<a href="http://picasaweb.google.ro/lh/photo/7Rva2USryUjFRvti2V5PCw?feat=embedwebsite"><img src="http://lh6.ggpht.com/_WTY0XTodjjg/SYxREf0wzxI/AAAAAAAAAOM/9jAJT_JEV34/s800/sprintburndownchart.png" /></a>
-
 
 * Conversions
 
 ** From Rally
 
-TODO
+[[http://www.rallydev.com/][Rally]] is an Agile lifecycle project management SaaS platform. 
+
+
+*** Import features list
+
+In =Rally= go to =Dashboards= - =Iteration Status= click on =Actions= button
+and select =Export to CSV=. The resulting =export.csv= file could be
+imported in epm with =epm-rally-print-features2=.
+
+*** Import features and tasks list
+
+In =Rally= go to =Backlog & Schedules= - =Tasks= click on =Actions= button
+and select =Export to CSV=. The resulting =export.csv= file could be
+imported in epm with =epm-rally-print-project=.
 
 ** To taskjuggler
 
@@ -196,6 +207,13 @@ TODO
 
 * Keystroke Summary
 
+You can set the epm prefix map key with:
+
+<example>
+(define-key global-map (kbd "\C-c\C-p") 'epm-prefix-map)
+</example>
+
+Epm defines the following commands keys:
  - a  epm-move-task-to-working
  - b  epm-rally-print-project
  - c  epm-copy-task-to-day
