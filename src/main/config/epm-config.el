@@ -12,7 +12,8 @@
 (require 'epm)
 (require 'epm-rally)
 
-(setq epm-repository "~/work/plan/")
+;(setq epm-repository "~/work/plan/")
+(setq epm-repository "~/pers/project/dpom/epm/src/site/muse/")
 (setq epm-main-file "index.muse")
 (setq epm-burndown-template-file "~/pers/project/dpom/epm/src/main/config/burndown.gp")
 (setq epm-resource-list '("bill" "dan" "john" "justin" "mary" "steve"))
