@@ -6,7 +6,7 @@
 
 (require 'cl)
 
-(defvar epm-test-project-home (expand-file-name "~/pers/project/dpom/epm/")
+(defvar epm-test-project-home (expand-file-name "~/pers/project/epm/")
   "project directory")
 
 (defvar epm-test-project-src (expand-file-name  "src/main/lisp/" epm-test-project-home)

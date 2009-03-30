@@ -1,38 +1,34 @@
-(add-to-list 'load-path "/local/share/emacs/site-lisp/ebld/")
+(defvar local-elisp-dir "~/.emacs.d/contrib/" "local elisp directory")
+(add-to-list 'load-path (concat local-elisp-dir "ebld/"))
 (require 'ebld)
 
-(add-to-list 'load-path "/local/share/emacs/site-lisp/")
-(add-to-list 'load-path "/local/share/emacs/site-lisp/muse")
-(load-file "/local/share/emacs/site-lisp/cedet/common/cedet.el")
+;;; define local variables
+
+;;; set local variables
+
+(add-to-list 'load-path local-elisp-dir)
+(add-to-list 'load-path "~/.emacs.d/elpa/muse-3.12")
+(load-file (expand-file-name "cedet/common/cedet.el" local-elisp-dir))
 (setq debug-on-error t)
 
 (setq ebld-project-name "epm")
+(setq ebld-clean-regexp "~$\\|semantic.cache\\|\.elc$")
+(setq ebld-elisp-deploy-root local-elisp-dir)
+(setq ebld-default-task 'install)
+(add-to-list 'load-path ebld-elisp-src-dir)
 
-(ebld-init)
+;;; auxilary functions
 
-(setq ebld-clean-regexp "~$\\|\.elc$\\|\.orig$\\|semantic\.cache")
-(setq ebld-elisp-src-dir "src/main/lisp/")
-(add-to-list 'load-path (expand-file-name ebld-elisp-src-dir))
-(setq ebld-default-task 'elispbuild)
+;;; tasks
 
-(defvar usb-dir "")
-(defvar pc-dir "")
-(setq usb-dir "/media/USB/dan/archive/pers/project/dpom/epm")
-(setq pc-dir "/misc/partner/users/dan/pers/project/dpom/epm")
-
-(task 'putusb () "push changes to usb" '(lambda (&optional x)
-                      (concat "git push -v " usb-dir)))
-
-(task 'getusb () "push changes from usb" '(lambda (&optional x)
-                      (concat "git pull -v " usb-dir)))
-
-(task 'putpc () "push changes to pc" '(lambda (&optional x)
-                      (concat "git push -v " pc-dir)))
-
-(task 'getpc () "push changes from pc" '(lambda (&optional x)
-                      (concat "git pull -v " pc-dir)))
+(load ebld-init-file)
 
 (task 'update () "update to last version" '(lambda (&optional x) "git svn rebase"))
 
 (task 'commit () "commit" '(lambda (&optional x) "git svn dcommit"))
+
+(task 'install '(clean genautoload elispbuild) "install package")
+
+
+
 

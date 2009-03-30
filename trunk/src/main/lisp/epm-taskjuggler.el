@@ -7,6 +7,8 @@
 
 ;;; Code
 
+(provide 'epm-taskjuggler)
+
 (require 'epm)
 
 ;; Global variables
@@ -25,6 +27,7 @@
 
 ;; TaskJuggler conversion
 
+;;;###autoload
 (defun epm-to-tjp (tjp)
   "Convert the current buffer epm project in the TJP file."
   (interactive "FTJP file: ")
@@ -85,11 +88,5 @@
 
 (define-key epm-prefix-map "j" 'epm-to-tjp)
 
-(provide 'epm-taskjuggler)
-
-;; test
-;(set-buffer (get-file-buffer "/home/users/dan/mood/plan/V2.4.Beta5.muse"))
-;(epm-to-tjp "/home/users/dan/mood/plan/V2.4.Beta5.muse" "/home/users/dan/mood/plan/tjp/V2.4.Beta5.tjp")
-;(epm-to-tjp "/home/users/dan/mood/plan/V2.4.Beta5-all.muse" "~/mood/plan/tjp/V2.4.Beta5-all.tjp")
 
 ;;; epm-taskjuggler.el ends here

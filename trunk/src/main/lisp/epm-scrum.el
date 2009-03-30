@@ -7,6 +7,8 @@
 
 ;;; Code
 
+(provide 'epm-scrum)
+
 (require 'epm)
 (require 'gnuplot)
 
@@ -82,6 +84,7 @@
 
 ;; Commands
 
+;;;###autoload
 (defun epm-display-item (mes getitem)
   "Display item for current buffer"
   (save-excursion
@@ -89,22 +92,26 @@
       (kill-new val)
       (message (format mes val)))))
 
+;;;###autoload
 (defun epm-display-estimate ()
   "Display remaining estimate for current buffer"
   (interactive)
   (epm-display-item "Estimate: %s" 'epm-compute-estimate))
 
 
+;;;###autoload
 (defun epm-display-remaining-estimate ()
   "Display remaining estimate for current buffer"
   (interactive)
   (epm-display-item "Remaining Estimate: %s" 'epm-compute-remaining-estimate))
 
+;;;###autoload
 (defun epm-display-done ()
   "Display the total work for current buffer"
   (interactive)
   (epm-display-item  "Total done: %s" 'epm-compute-done))
 
+;;;###autoload
 (defun epm-display-user-done ()
   "Display the specific user total work for current buffer"
   (interactive)
@@ -115,11 +122,13 @@
       (message (format "%s done: %s" user val)))))
 
 
+;;;###autoload
 (defun epm-display-todo ()
   "Display todo for current buffer"
   (interactive)
   (epm-display-item  "Total todo: %s" 'epm-compute-todo))
 
+;;;###autoload
 (defun epm-display-focus ()
   "Display focus for current buffer"
   (interactive)
@@ -128,12 +137,14 @@
                    (/ (epm-compute-estimate) (* (epm-get-etime) (epm-get-team)))))))
 
 
+;;;###autoload
 (defun epm-display-burndown-chart ()
   "Display the scrum burndown chart for the current buffer project."
   (interactive)
   (save-excursion
     (epm-plot-burndown (epm-get-ework) (epm-get-etime) (epm-get-burndown))))
 
+;;;###autoload
 (defun epm-update-task ()
   "Redisplay the actual task updating estimate and done fields."
   (interactive)
@@ -156,7 +167,5 @@
 (define-key epm-prefix-map "w" 'epm-display-done)
 (define-key epm-prefix-map "z" 'epm-display-estimate)
 
-
-(provide 'epm-scrum)
 
 ;;; epm-scrum.el ends here
