@@ -1,17 +1,24 @@
 ;;; epm.el --- emacs project mamagement tool
-
-;; Copyright (C) 2008-2009 Dan Pomohaci (dpom)
+;; Copyright (C) 2009 Dan Pomohaci (dpom)
 
 ;; Author: Dan Pomohaci <dan.pomohaci@gmail.com>
-;; Maintainer: Dan Pomohaci <dan.pomohaci@gmail.com>
-;; Created: 27 Jan 2007
 ;; Version: 1.0
 ;; Keywords: project management muse scrum
 
-;; This program is free software; you can redistribute it and/or
-;; modify it under the terms of the GNU General Public License.
+;; This file is not part of Emacs
 
-;;; Code
+;; This program is free software; you can redistribute it and/or
+;; modify it under the terms of the GNU General Public License as
+;; published by the Free Software Foundation; either version 2, or (at
+;; your option) any later version.
+
+;;; Commentary:
+
+
+;;; Code:
+
+(provide 'epm)
+
 
 (require 'muse)   
 (require 'muse-mode)
@@ -372,11 +379,13 @@ and ending in MAX."
 
 ;; Commands
 
+;;;###autoload
 (defun epm ()
   "Main entry point."
   (interactive)
   (find-file (concat epm-repository epm-main-file))) 
 
+;;;###autoload
 (defun epm-add-resource ()
   "Add a resource (from resource list) to a task."
   (interactive)
@@ -384,6 +393,7 @@ and ending in MAX."
   (let ((resource (epm-read-resource)))
     (insert (format " [[#res-%s][%s]]" resource resource))))
 
+;;;###autoload
 (defun epm-add-day ()
   "Add a date to a task. Default current date."
   (interactive)
@@ -393,6 +403,7 @@ and ending in MAX."
 
 
 
+;;;###autoload
 (defun epm-display-task-total-done ()
   "Diplay the total todo time for the current task."
   (interactive)
@@ -401,6 +412,7 @@ and ending in MAX."
       (kill-new val)
       (message "Total done on this task: %s" val))))
 
+;;;###autoload
 (defun epm-copy-task-to-day ()
   "Copy the current task to a specific day."
   (interactive)
@@ -414,24 +426,29 @@ and ending in MAX."
         (insert (epm-task-print task))
         (save-buffer)))))
 
+;;;###autoload
 (defun epm-move-task-to-working ()
   (interactive)
   (epm-move-task epm-working-regexp))
 
+;;;###autoload
 (defun epm-move-task-to-done ()
   (interactive)
   (epm-move-task epm-done-regexp))
 
+;;;###autoload
 (defun epm-move-task-to-planned ()
   (interactive)
   (epm-move-task epm-planned-regexp))
 
+;;;###autoload
 (defun epm-add-nonworking-period ()
   "Insert an non-working period with the following format:
 ?resource startdate enddate"
   (interactive)
   (insert (format "?%s %s %s\n" (epm-read-resource) (epm-read-day "Start day") (epm-read-day "End day"))))
 
+;;;###autoload
 (defun epm-print-all-tasks-between ()
   "Insert in current buffer all tasks contained in day files."
   (interactive)
@@ -442,9 +459,8 @@ and ending in MAX."
 
 ;; Key map
 
-(defvar epm-prefix-map nil)
-
-(setq epm-prefix-map
+;;;###autoload
+(defvar epm-prefix-map
   (let ((map (make-sparse-keymap)))
     (define-key map "a" 'epm-move-task-to-working)
     (define-key map "c" 'epm-copy-task-to-day)
@@ -458,8 +474,11 @@ and ending in MAX."
     (define-key map "t" 'epm-display-task-total-done)
     (define-key map "x" 'epm-move-task-to-done)
     map))
+
+;;;###autoload
 (fset 'epm-prefix-map epm-prefix-map)
 
+;;;###autoload
 (defun epm-help ()
   "Display a help buffer"
   (interactive)
@@ -475,12 +494,11 @@ and ending in MAX."
   
 
 
+;;;###autoload
 (define-derived-mode epm-mode muse-mode "EPM"
   "A project manager mode."
   (set (make-local-variable 'normal-auto-fill-function) nil)
   (turn-off-auto-fill))
 
-
-(provide 'epm)
 
 ;;; epm.el ends here

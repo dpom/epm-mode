@@ -6,6 +6,8 @@
 
 ;;; Code
 
+(provide 'epm-rally)
+
 (require 'epm-scrum)
 
 ;; Global variables
@@ -150,11 +152,13 @@ from string."
 
 ;; Commands
 
+;;;###autoload
 (defun epm-rally-print-project (file)
   "Insert in the current buffer a printable form of the project using a rally csv FILE"
   (interactive "fRally csv file: ")
   (epm-print-project (epm-rally-get-feature-list file) (epm-rally-get-task-list file)))
   
+;;;###autoload
 (defun epm-rally-print-features (file)
   "Insert in the current buffer a printable form of the features list using a rally csv FILE"
   (interactive "fRally tasks csv file: ")
@@ -163,6 +167,7 @@ from string."
         (epm-rally-get-feature-list file)))
 
   
+;;;###autoload
 (defun epm-rally-print-features2 (file)
   "Insert in the current buffer a printable form of the features list using a rally user stories csv FILE"
   (interactive "fRally features csv file: ")
@@ -176,7 +181,5 @@ from string."
 (define-key epm-prefix-map "e" 'epm-rally-print-features)
 (define-key epm-prefix-map "k" 'epm-rally-print-features2)
 
-
-(provide 'epm-rally)
 
 ;;; epm-rally.el ends here
