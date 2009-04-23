@@ -41,7 +41,7 @@
 
 ;(setq epm-task-regexp "^!\\([0-9]*\\)\.\\([0-9]*\\) \"\\([^\"]*\\)\"[ ]*{\\([0-9.]*\\)}[ ]*(\\([0-9.]*\\))[ ]*\|\\([0-9.]*\\)\|[ ]*\\(.*\\)")
 
-(defvar epm-feature-regexp "^\*\* \\([0-9]+\\)\. \\(.*\\)"
+(defvar epm-feature-regexp "^\*\*\* \\([0-9]+\\)\. \\(.*\\)"
   "Regular expresion for a feature.")
 
 (defvar epm-resource-regexp ".*#res-\\([^] \n]*\\)"
@@ -74,7 +74,7 @@
 (defvar epm-endfeature-len 1
   "Endfeature marker length")
 
-(defvar epm-startfeature-format "** %d\. ")
+(defvar epm-startfeature-format "*** %d\. ")
 
 
 
