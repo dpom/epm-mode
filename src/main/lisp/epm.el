@@ -36,12 +36,12 @@
 (defvar epm-resource-list '()
   "resource names list")
 
-(defvar epm-task-regexp "^!\\([0-9]*\\)\.\\([0-9]*\\) \"\\([^\"]*\\)\"[ ]*{\\([0-9.]*\\)}[ ]*(\\([0-9.]*\\))[ ]*\|\\([0-9.]*\\)\|[ ]*\\(.*\\)"
+(defvar epm-task-regexp "^!\\([A-Z0-9]*\\)\.\\([0-9]*\\) \"\\([^\"]*\\)\"[ ]*{\\([0-9.]*\\)}[ ]*(\\([0-9.]*\\))[ ]*\|\\([0-9.]*\\)\|[ ]*\\(.*\\)"
   "Regular expresion for a task.")
 
-;(setq epm-task-regexp "^!\\([0-9]*\\)\.\\([0-9]*\\) \"\\([^\"]*\\)\"[ ]*{\\([0-9.]*\\)}[ ]*(\\([0-9.]*\\))[ ]*\|\\([0-9.]*\\)\|[ ]*\\(.*\\)")
+;(setq epm-task-regexp "^!\\([A-Z0-9]*\\)\.\\([0-9]*\\) \"\\([^\"]*\\)\"[ ]*{\\([0-9.]*\\)}[ ]*(\\([0-9.]*\\))[ ]*\|\\([0-9.]*\\)\|[ ]*\\(.*\\)")
 
-(defvar epm-feature-regexp "^\*\*\* \\([0-9]+\\)\. \\(.*\\)"
+(defvar epm-feature-regexp "^\*\*\* \\([A-Z0-9]+\\)\. \\(.*\\)"
   "Regular expresion for a feature.")
 
 (defvar epm-resource-regexp ".*#res-\\([^] \n]*\\)"
@@ -74,7 +74,7 @@
 (defvar epm-endfeature-len 1
   "Endfeature marker length")
 
-(defvar epm-startfeature-format "*** %d\. ")
+(defvar epm-startfeature-format "*** %s\. ")
 
 
 
@@ -83,7 +83,8 @@
 (defun epm-get-task ()
   "Create a task list based on epm-task-regexp.
 \(id featureid desc estimation todo done res+date \)"
-  (list (string-to-number (match-string-no-properties 1))
+  (list 
+        (match-string-no-properties 1)
         (string-to-number (match-string-no-properties 2))
         (match-string-no-properties 3)
         (string-to-number (match-string-no-properties 4))
@@ -110,7 +111,7 @@
 
 (defun epm-task-print (task)
   "Return a printable form of a TASK."
-  (format "!%d.%d \"%s\" {%.2f} (%.2f) |%.2f| %s\n\n"
+  (format "!%s.%d \"%s\" {%.2f} (%.2f) |%.2f| %s\n\n"
           (epm-get-task-featureid task)
           (epm-get-task-id task)
           (epm-get-task-desc task)
@@ -144,13 +145,13 @@
    
 
 (defun epm-task< (task1 task2)
-  (or (< (epm-get-task-featureid task1) (epm-get-task-featureid task2))
-      (and (= (epm-get-task-featureid task1) (epm-get-task-featureid task2))
+  (or (string< (epm-get-task-featureid task1) (epm-get-task-featureid task2))
+      (and (string= (epm-get-task-featureid task1) (epm-get-task-featureid task2))
            (< (epm-get-task-id task1) (epm-get-task-id task2)))))
 
 
 (defun epm-task= (task1 task2)
-  (and (= (epm-get-task-featureid task1) (epm-get-task-featureid task2))
+  (and (string= (epm-get-task-featureid task1) (epm-get-task-featureid task2))
            (= (epm-get-task-id task1) (epm-get-task-id task2))))
 
 
@@ -162,10 +163,10 @@
 (defsubst epm-get-feature-desc (feature) (nth 1 feature))
 
 (defun epm-feature< (feature1 feature2)
-  (< (epm-get-feature-id feature1) (epm-get-feature-id feature2)))
+  (string< (epm-get-feature-id feature1) (epm-get-feature-id feature2)))
 
 (defun epm-feature= (feature1 feature2)
-  (= (epm-get-feature-id feature1) (epm-get-feature-id feature2)))
+  (string= (epm-get-feature-id feature1) (epm-get-feature-id feature2)))
 
   
 
@@ -179,7 +180,7 @@
 
 
 (defun epm-get-feature ()
-  (list (string-to-number (match-string-no-properties 1))
+  (list (match-string-no-properties 1)
         (match-string-no-properties 2)))
 
 
@@ -195,7 +196,7 @@
 
 (defun epm-feature-print (feature)
   "Return a printable form of a FEATURE."
-  (format "** %d. %s\n\n"
+  (format "*** %s. %s\n\n"
           (epm-get-feature-id feature)
           (epm-get-feature-desc feature)))
 
@@ -264,7 +265,7 @@ and ending in MAX."
 
 (defun epm-get-task-from-list (feature id tasks)
     (car (remove nil (mapcar (lambda (x)
-                          (and (= (epm-get-task-featureid x) feature)
+                          (and (string= (epm-get-task-featureid x) feature)
                                (= (epm-get-task-id x) id)
                                x))
                         tasks))))

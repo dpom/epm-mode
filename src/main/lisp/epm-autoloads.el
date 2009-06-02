@@ -5,7 +5,7 @@
 ;;;### (autoloads (epm-mode epm-help epm-print-all-tasks-between
 ;;;;;;  epm-add-nonworking-period epm-move-task-to-planned epm-move-task-to-done
 ;;;;;;  epm-move-task-to-working epm-copy-task-to-day epm-display-task-total-done
-;;;;;;  epm-add-day epm-add-resource epm) "epm" "epm.el" (18896 56225))
+;;;;;;  epm-add-day epm-add-resource epm) "epm" "epm.el" (18981 4853))
 ;;; Generated autoloads from epm.el
 
 (autoload (quote epm) "epm" "\
