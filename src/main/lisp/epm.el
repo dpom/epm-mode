@@ -189,7 +189,7 @@
   "Select from TASKLIST only the tasks with FEATUREID."
   (let ((acc ()))
     (mapc (lambda (x)
-            (if (= featureId  (epm-get-task-featureid x))
+            (if (string= featureId  (epm-get-task-featureid x))
                 (setq acc (cons x acc))))
           tasksList)
     (sort acc 'epm-task<)))
