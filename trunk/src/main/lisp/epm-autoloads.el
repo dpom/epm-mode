@@ -5,7 +5,7 @@
 ;;;### (autoloads (epm-mode epm-help epm-print-all-tasks-between
 ;;;;;;  epm-add-nonworking-period epm-move-task-to-planned epm-move-task-to-done
 ;;;;;;  epm-move-task-to-working epm-copy-task-to-day epm-display-task-total-done
-;;;;;;  epm-add-day epm-add-resource epm) "epm" "epm.el" (18981 4853))
+;;;;;;  epm-add-day epm-add-resource epm) "epm" "epm.el" (18982 32696))
 ;;; Generated autoloads from epm.el
 
 (autoload (quote epm) "epm" "\
@@ -140,8 +140,8 @@ Convert the current buffer epm project in the TJP file.
 ;;;***
 
 ;;;### (autoloads (epm-rally-print-features2 epm-rally-print-features
-;;;;;;  epm-rally-print-project) "epm-rally" "epm-rally.el" (18896
-;;;;;;  54021))
+;;;;;;  epm-rally-print-project) "epm-rally" "epm-rally.el" (18983
+;;;;;;  33433))
 ;;; Generated autoloads from epm-rally.el
 
 (autoload (quote epm-rally-print-project) "epm-rally" "\

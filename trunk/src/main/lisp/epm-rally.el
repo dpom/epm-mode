@@ -12,8 +12,10 @@
 
 ;; Global variables
 
-(defvar epm-rally-userstory-regexp "[S\\|DE]\\([0-9]+\\): \\(.+\\)"
+(defvar epm-rally-userstory-regexp "\\([S\\|DE][0-9]+\\): \\(.+\\)"
   "User story regular expression")
+
+;(setq epm-rally-userstory-regexp "\\([S\\|DE][0-9]+\\): \\(.+\\)")
 
 ;; Functions
 
@@ -119,7 +121,7 @@ from string."
 (defun epm-rally-to-epm-task (task)
   "Convert rally TASK into an epm task"
   (list
-   (string-to-number (epm-rally-task-get-userstory-id task))
+   (epm-rally-task-get-userstory-id task)
    (string-to-number (epm-rally-task-get-taskid task))
    (epm-rally-task-get-desc task)
    (epm-rally-task-get-estimate task)
@@ -133,7 +135,7 @@ from string."
    (sort 
     (remove-duplicates 
     (mapcar #'(lambda (x)
-                (list (string-to-number (epm-rally-task-get-userstory-id x))
+                (list (epm-rally-task-get-userstory-id x)
                       (epm-rally-task-get-userstory-name x)))
             (epm-rally-import-file file))
      :test 'epm-feature=)
@@ -142,7 +144,7 @@ from string."
 (defun epm-rally-get-feature-list2 (file)
   "Extract feature list from rally user stories csv FILE"
   (mapcar #'(lambda (x)
-              (list (string-to-number (epm-rally-userstory-get-id x))
+              (list (epm-rally-userstory-get-id x)
                     (epm-rally-userstory-get-name x)))
           (epm-rally-import-file file)))
 
