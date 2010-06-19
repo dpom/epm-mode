@@ -132,14 +132,12 @@ from string."
 
 (defun epm-rally-get-feature-list (file)
   "Extract feature list from rally tasks csv FILE"
-   (sort 
     (remove-duplicates 
     (mapcar #'(lambda (x)
                 (list (epm-rally-task-get-userstory-id x)
                       (epm-rally-task-get-userstory-name x)))
             (epm-rally-import-file file))
-     :test 'epm-feature=)
-    'epm-feature<))
+     :test 'epm-feature=))
 
 (defun epm-rally-get-feature-list2 (file)
   "Extract feature list from rally user stories csv FILE"

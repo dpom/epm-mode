@@ -286,7 +286,7 @@ and ending in MAX."
 (defun epm-goto-endtask ()
   "Go to task end"
   (if (re-search-forward epm-endtask-regexp nil t)
-      (goto-char (forward-point (- 0 epm-endtask-len)))
+      (goto-char (+ (point) (- 0 epm-endtask-len)))
     (error "Not in a task")))
 
 (defun epm-read-day (&optional prompt)
@@ -323,7 +323,7 @@ and ending in MAX."
   (goto-char min)
   (if (re-search-forward (format epm-startfeature-format featureid) max  t)
     (if (re-search-forward epm-endfeature-regexp max t)
-        (goto-char (forward-point(- 0 epm-endfeature-len)))
+        (goto-char (+ (point) (- 0 epm-endfeature-len)))
       (goto-char max))
     (goto-char max)))
 
