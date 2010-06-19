@@ -19,13 +19,13 @@ The directory structure is similar to [[http://maven.apache.org/][Maven]] projec
 
 ** Prerequisites
 
-You need Emacs (21.1 or greater), muse, and gnuplot. For tests you
+You need Emacs (22.1 or greater), muse, and gnuplot. For tests you
 need also ert.
 
 ** Installation
 
 Copy the source code directory into your file hierarchy. I use
-/local/share/emacs/epm  directory for this project. Optionally you can
+~/.emacs.d/contrib/epm  directory for this project. Optionally you can
 compile the sources.
 
 
